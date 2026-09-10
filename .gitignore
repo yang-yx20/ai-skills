@@ -1,0 +1,9 @@
+# This repo is scoped ONLY to the portable Claude Code knowledge folder
+# (CLAUDE.md + .claude/skills/), NOT the rest of this Dropbox directory
+# (lab data, plasmids, meeting notes, etc.). Keep it that way: never
+# `git add -A` / `git add .` here.
+*
+!.gitignore
+!CLAUDE.md
+!.claude/
+!.claude/**
