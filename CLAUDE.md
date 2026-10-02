@@ -6,8 +6,8 @@ That's the intended mechanism for cross-machine reuse — the global
 `~/.claude/skills/` directory does *not* sync between machines, so anything
 meant to be reusable across computers belongs here instead, not there.
 
-This folder is also mirrored to a git repo (see `.claude/README.md` once set
-up) so it can be `git clone`d on clusters that don't run Dropbox.
+This folder is also mirrored to a git repo, github.com/yang-yx20/ai-skills
+(see `README.md`), so it can be `git clone`d on clusters that don't run Dropbox.
 
 ## Skills
 
