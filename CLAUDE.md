@@ -35,6 +35,9 @@ Current skills:
   tooltip, search, click-to-isolate clusters) for a cluster network or a
   UMAP/embedding scatter; includes the generic scatter builder
   `interactive_scatter.py`.
+- `viz-svg-for-illustrator` — matplotlib `rcParams` (`svg.fonttype`,
+  `pdf.fonttype`, `font.family`) that keep SVG/PDF text as editable `<text>`
+  instead of outlined paths when opened in Illustrator.
 
 When a new recurring task comes up that's worth not re-deriving next time,
 add a new skill folder here rather than relying on session memory — skills
