@@ -21,6 +21,7 @@ Naming convention (extend as new categories show up):
 - `analysis-*` — how to analyze a specific data type/assay
 - `fileformat-*` — how to read/interpret a specific file format
 - `meta-*` — process/authoring skills about Claude Code itself
+- `viz-*` — how to build a specific kind of figure / interactive visualization deliverable
 
 Current skills:
 - `gene-pubmed-count` — count PubMed articles linked to a gene (single live
@@ -30,6 +31,10 @@ Current skills:
 - `ncbi-ftp-bulk-data` — check ftp.ncbi.nlm.nih.gov for a bulk file before
   looping a live NCBI API call across many genes; catalogs the bulk files
   already used (gene2pubmed, mim2gene_medgen, GeneRIF, HomoloGene, gene_info).
+- `viz-interactive-cluster-html` — self-contained interactive HTML (zoom/pan,
+  tooltip, search, click-to-isolate clusters) for a cluster network or a
+  UMAP/embedding scatter; includes the generic scatter builder
+  `interactive_scatter.py`.
 
 When a new recurring task comes up that's worth not re-deriving next time,
 add a new skill folder here rather than relying on session memory — skills

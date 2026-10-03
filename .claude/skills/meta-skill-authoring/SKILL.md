@@ -17,6 +17,8 @@ and behaves the same way instead of each one improvising its own shape.
   - `fileformat-*` — how to read/interpret a specific file format
   - `meta-*` — process/authoring skills about Claude Code itself (this one is
     the first)
+  - `viz-*` — how to build a specific kind of figure / interactive
+    visualization deliverable
   - Hit a task that doesn't fit any of these? Pick a new short prefix,
     **and add it to the list above and in `CLAUDE.md`** in the same commit —
     the prefix list is only useful if it stays current.

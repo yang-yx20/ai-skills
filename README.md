@@ -13,10 +13,11 @@ computers. This git repo mirrors it for machines without Dropbox, such as HPC cl
 |---|---|---|
 | [`gene-pubmed-count`](.claude/skills/gene-pubmed-count/SKILL.md) | Counts PubMed articles linked to a gene, either with a live NCBI `elink` call or from the bulk `gene2pubmed` file | "How many papers are there on gene X?", or ranking/filtering genes by publication count |
 | [`ncbi-ftp-bulk-data`](.claude/skills/ncbi-ftp-bulk-data/SKILL.md) | Checks `ftp.ncbi.nlm.nih.gov` for a bulk flat file before looping a live API (catalogs gene2pubmed, mim2gene_medgen, GeneRIF, HomoloGene, gene_info) | Any task that needs NCBI data for more than a handful of genes |
+| [`viz-interactive-cluster-html`](.claude/skills/viz-interactive-cluster-html/SKILL.md) | Builds one self-contained interactive HTML (zoom/pan, tooltip, gene search, click-to-isolate clusters, neighbour highlight) for a cluster network or a UMAP/embedding scatter; ships a generic scatter builder | "Make an interactive / clickable HTML of these clusters / this network / this UMAP" |
 | [`meta-skill-authoring`](.claude/skills/meta-skill-authoring/SKILL.md) | Template and conventions for writing a new skill here, plus the commit/push steps | Adding or reorganizing a skill |
 
 **Naming prefixes:** `ncbi-*` / `gene-*` for NCBI, PubMed and gene-database lookups; `analysis-*` for how to
-analyze an assay; `fileformat-*` for reading a file format; `meta-*` for skills about Claude Code itself.
+analyze an assay; `fileformat-*` for reading a file format; `meta-*` for skills about Claude Code itself; `viz-*` for building a kind of figure or interactive visualization.
 
 ## Using it on another machine
 
