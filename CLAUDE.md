@@ -38,6 +38,9 @@ Current skills:
 - `viz-svg-for-illustrator` — matplotlib `rcParams` (`svg.fonttype`,
   `pdf.fonttype`, `font.family`) that keep SVG/PDF text as editable `<text>`
   instead of outlined paths when opened in Illustrator.
+- `viz-volcano-barplot-style` — lab (L-Kynurenine) publication style for
+  volcano plots and NES / log2FC / per-gene fold-change bar plots; drop-in
+  helper `pub_style.py` (adjustText labels, PDF+SVG).
 
 When a new recurring task comes up that's worth not re-deriving next time,
 add a new skill folder here rather than relying on session memory — skills
