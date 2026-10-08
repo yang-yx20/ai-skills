@@ -22,6 +22,25 @@ The canonical figures come from the L-Kynurenine TMT project:
 | bars | `edgecolor="none"`, width/height 0.7; zero line black lw 0.5 |
 | output | always `stem.pdf` + `stem.svg` (no PNG); one figure per file, not multi-panel grids |
 
+## Statistics convention (use this, not limma / moderated t)
+
+The style comes with the Kyn statistics. Use them unless the user asks for something else. Sources: Kyn `volcano.py` and `GSEA_ORA/step1_compute_per_protein_log2fc.py`.
+
+| quantity | definition |
+|---|---|
+| log2FC | `log2(mean(linear S/N, group A) / mean(linear S/N, group B))`, i.e. a ratio of arithmetic means, **not** mean(log2) − mean(log2) |
+| p | Welch t-test (`equal_var=False`) on the same **linear** S/N values |
+| padj | Benjamini–Hochberg over all tested proteins |
+| hit | p (or padj) < 0.05 **and** \|FC\| > 1.25 (\|log2FC\| > 0.32) |
+| volcano versions | make both: `volcano_rawP` (y = −log10 p) and `volcano_padj` (y = −log10 padj) |
+| GSEA | `gseapy.prerank` ranked by the **raw log2FC** above |
+
+- Input is the TMT `"... sn sum"` columns. They are already equal-total normalised per channel, so do no extra scaling.
+- Filter out decoys (`##`), `contaminant` rows (even familiar proteins such as CTSD that the search flagged) and rows with any zero channel.
+- Keep the full-precision linear values in any saved table. Rounding to 2 decimals turns tiny S/N into 0, and a later log2 then gives −inf.
+- A low-signal flag is still worth adding to the hit rule: max group mean S/N < 20. Without it, near-zero proteins produce huge fold changes.
+- Spot-check 2–3 proteins by recomputing FC and Welch p by hand from the raw TSV.
+
 ## Volcano — `ps.volcano(...)`
 
 - figsize **3.4 × 3.4**; dots `s=20` (non-sig) / `s=34` (sig), `linewidths=0`, zorder 2/3.
@@ -55,6 +74,9 @@ The canonical figures come from the L-Kynurenine TMT project:
 3. **Per-gene log2FC panel bars — `ps.vbar(...)`** for a themed gene list
    - width `0.4 + 0.11 × n_genes`, height 1.6.
    - Colored only if significant: red up, blue down, gray otherwise. Gene names rotated 90°.
+   - A gene that wasn't quantified gets `np.nan`, which draws an "n.d." mark with no bar. Never silently drop a marker the user asked for. A label of `""` with `np.nan` leaves a blank spacer slot between gene groups.
+   - Label markers by their common name with the symbol in parentheses, e.g. `CD11b (ITGAM)`. Mouse-only markers such as F4/80 have no human macrophage counterpart (EMR1 is an eosinophil marker, PMID 17823986), so show them as n.d. and say why.
+   - If the user wants markers to "represent" a pathway, give references and verify each one against PubMed (E-utilities esearch with title words, first author and year, then esummary and a title comparison) before citing. Worked example: `xvivo_vs_rpmi/marker_barplots.py` + `results/references_lipid_panels.tsv`.
 
 ## Quick start
 ```python

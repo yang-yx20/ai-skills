@@ -40,7 +40,8 @@ Current skills:
   instead of outlined paths when opened in Illustrator.
 - `viz-volcano-barplot-style` — lab (L-Kynurenine) publication style for
   volcano plots and NES / log2FC / per-gene fold-change bar plots; drop-in
-  helper `pub_style.py` (adjustText labels, PDF+SVG).
+  helper `pub_style.py` (adjustText labels, PDF+SVG) and the Kyn statistics
+  convention (linear-mean log2FC, Welch on linear S/N, BH, FC 1.25).
 
 When a new recurring task comes up that's worth not re-deriving next time,
 add a new skill folder here rather than relying on session memory — skills

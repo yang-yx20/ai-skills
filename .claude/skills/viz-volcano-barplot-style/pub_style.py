@@ -110,11 +110,18 @@ def hbar(ax, labels, values, sig=None, xlabel="NES", title=None):
 
 
 def vbar(ax, labels, values, sig=None, ylabel="log$_2$FC", title=None):
-    """Vertical bars per gene (e.g. log2FC panels): red >0, blue <0, gray if not sig."""
-    values = np.asarray(values, float)
+    """Vertical bars per gene (e.g. log2FC panels): red >0, blue <0, gray if not sig.
+    NaN values = not detected: no bar, an "n.d." mark sits on the zero line instead.
+    An empty-string label leaves a blank slot (use it as a spacer between gene groups)."""
+    labels, values = list(labels), np.asarray(values, float)
     sig = np.ones(len(values), bool) if sig is None else np.asarray(sig, bool)
+    nd = np.isnan(values)
     xx = np.arange(len(values))
-    ax.bar(xx, values, width=0.7, color=_bar_colors(values, sig), edgecolor="none", zorder=2)
+    ax.bar(xx[~nd], values[~nd], width=0.7, color=_bar_colors(values[~nd], sig[~nd]),
+           edgecolor="none", zorder=2)
+    for i in np.where(nd)[0]:
+        if str(labels[i]):
+            ax.text(xx[i], 0, "n.d.", ha="center", va="bottom", fontdict=FONT, color="0.4")
     ax.axhline(0, color="k", lw=0.5, zorder=3)
     ax.set_xticks(xx)
     ax.set_xticklabels(labels, fontdict=FONT, rotation=90)
