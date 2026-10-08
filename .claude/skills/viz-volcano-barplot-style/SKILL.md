@@ -39,7 +39,8 @@ The canonical figures come from the L-Kynurenine TMT project:
   ```
   Passing `x=`/`y=` of **all** points pushes labels off the dots, not just off each other.
 - How many labels is the user's call. Kyn used ≤30, ranked by `negLogP × |log2FC|`. For dense comparisons the user preferred **top 20 per side by |FC|** (40 total). Don't silently cut the label count to make it "clean". If 40 labels won't fit at 3.4", widen the figure (≤ 4.5") instead.
-- Highlight-a-gene-set variant (LRR / AhR targets / one gene): gray background, set members that are also significant in red and labeled. Single-gene variant: red dot with `edgecolors="k", linewidths=0.4`, always labeled. See the `plot_volcano_lrr` and `plot_volcano_chi3l1` functions in Kyn `volcano.py`.
+- **Exception — highlight variant with many labels on a dense background:** pass `x=`/`y=` of only the **highlighted** points (`x=x[hl], y=y[hl]`), add `ensure_inside_axes=True`, and use `expand=(1.3, 1.6), force_text=(0.4, 0.8), force_static=(0.4, 0.8)`. With thousands of background dots as obstacles, adjustText has nowhere to put the labels and pushes them all into the axes corners. Example: `xvivo_vs_rpmi/volcano_LAM_genes.py`.
+- Highlight-a-gene-set variant (LRR / AhR targets / one gene): gray background, set members that are also significant in red and labeled. If the user asks to label a fixed gene list "with its change", label every member as `GENE (+4.4)`, i.e. log2FC to one decimal. Draw members with `edgecolors="k", linewidths=0.4`: red or blue when they pass the hit rule, gray fill when not. Single-gene variant: red dot with `edgecolors="k", linewidths=0.4`, always labeled. See the `plot_volcano_lrr` and `plot_volcano_chi3l1` functions in Kyn `volcano.py`.
 
 ## Bar plots
 
